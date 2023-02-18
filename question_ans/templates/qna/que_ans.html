@@ -1,0 +1,14 @@
+{% extends 'qna/temp.html' %}
+
+{% block title %}{% endblock title %}
+{% block head %}{% endblock head %}
+{% block body %}
+    <h1>Hello Question</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        {{ form.media }}
+        <button id="logout-btn" type="submit">Post Answer</button>
+    </form>
+{% endblock body %}
+{% block scriptpart %}{% endblock scriptpart %}
