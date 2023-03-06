@@ -1,0 +1,55 @@
+{% extends 'temp.html' %}
+
+{% block title %}Ask Question{% endblock title %}
+{% block headcss %}
+    <style>
+        #formque input{
+            border: 1px solid rgb(227, 189, 189) !important;
+            display: block;
+            padding: 4px;
+            border-radius: 5px;
+        }
+        
+        #formque textarea{
+            border: 2px solid red !important;
+            display: block;
+        }
+        
+        .borderq{
+            border: 1px solid teal;
+            padding: 5px;
+            background-color: #EBF4FB;
+            border-radius: 5px ;
+        }
+        .widtha{
+            width: 67% !important;
+        }
+    </style>
+{% endblock headcss %}
+{% block body %}
+<div class="md:mx-20 mx-10">
+    <h1 class="text-4xl font-bold my-10">Ask a public question</h1>
+    <div class="lg:w-4/6 borderq">
+        <h1 class="text-xl">Writing a good question</h1>
+        <p>You’re ready to ask a programming-related question and this form will help guide you through the process.
+        </p>
+        <p>Looking to ask a non-programming question? See the topics here to find a relevant site.</p>
+        <h1 class="my-3">Steps</h1>
+        <ul type="circle" class="mx-4">
+            <li>&#x2022; Summarize your problem in a one-line title.</li>
+            <li>&#x2022; Describe your problem in more detail.</li>
+            <li>&#x2022; Describe what you tried and what you expected to happen.</li>
+            <li>&#x2022; Add “tags” which help surface your question to members of the community.</li>
+            <li>&#x2022; Review your question and post it to the site.</li>
+        </ul>
+    </div>
+    <div class="mt-10">
+    <form id="formque" action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</div>
+{% endblock body %}
+{% block scriptpart %}{% endblock scriptpart %}

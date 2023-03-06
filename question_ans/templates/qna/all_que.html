@@ -1,0 +1,37 @@
+{% extends 'temp.html' %}
+{% load humanize %}
+{% block title %}Questions{% endblock title %}
+{% block headcss %}
+{% endblock headcss %}
+{% block questionpp %}text-white{% endblock questionpp %}
+{% block body %}
+<div class="bg-gray-400 min-h-screen pb-20">
+    {%if que is not None%}
+    <div class="pt-10">
+        <h1 class="text-center text-3xl">Questions</h1>
+    </div>
+    {%for ques in que%}
+    <div class="lg:mx-56 mx-10 mt-8">
+        <div class="p-3 bg-slate-800 shadow rounded-lg">
+            <div class='flex justify-between items-center justify-center'>
+            <h3 class="text-lg text-blue-400">Asked by {{ques.user}}</h3>
+            <h4 class="text-sm text-blue-400">asked {{ques.date_created | naturaltime}}</h4>
+        </div>
+        <a href="/question_ans/description_que/id={{ques.que_id}}">
+            <p class="font-sans text-xl text-white">
+              {{ques.title | truncatechars:200}}
+            </p>
+        </a>
+            <div class="flex mt-2 items-center">
+                
+                {% comment %} {%for tg in ques.tags |split:" "%} {% endcomment %}
+                <p class="bg-slate-300 mx-1 px-2 align-middle rounded-lg items-center">{{ques.tags}}</p>
+                {% comment %} {%endfor%} {% endcomment %}
+            </div>
+          </div>
+    </div>
+    {%endfor%}
+    {%endif%}
+</div>
+{% endblock body %}
+{% block scriptpart %}{% endblock scriptpart %}
